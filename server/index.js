@@ -51,6 +51,7 @@ app.get('*', (req, res) => {
 })
 
 app.use((err, req, res, next) => {
+  console.error(err.stack) // Add this line
   const statusCode = err.statusCode || 500
   const message = err.message || 'Internal Server Error'
   return res.status(statusCode).json({
