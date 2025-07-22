@@ -16,10 +16,10 @@ export const sendEmail = (form) => {
 export const sendMessage = (form) => {
   const emailjsUserId = import.meta.env.VITE_APP_EMAILJS;
   return emailjs.sendForm(
-    'service_zjv1bbl', // Your EmailJS service ID
-    'template_jquqkon', // Your EmailJS template ID
+    'service_e2leru8', // <-- update to your new Gmail service ID
+    'template_jquqkon',
     form,
-    emailjsUserId // Your EmailJS public key
+    emailjsUserId
   );
 };
 
