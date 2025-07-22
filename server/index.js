@@ -6,6 +6,7 @@ import authRouter from './routes/auth.route.js'
 import listingRouter from './routes/listing.route.js'
 import cookieParser from 'cookie-parser'
 import path from 'path'
+import cors from 'cors' // or const cors = require('cors');
 dotenv.config()
 
 mongoose
@@ -28,6 +29,19 @@ app.use(cookieParser())
 app.listen(3000, () => {
   console.log('Server is running on port 3000')
 })
+
+const allowedOrigins = [
+  'https://telangana-realestate.web.app',
+  'https://telangana-realestate.firebaseapp.com',
+  'http://localhost:5173',
+]
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true, // if you use cookies/sessions
+  })
+)
 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
