@@ -16,7 +16,10 @@ export default function ShowListings() {
   const handleShowListings = async () => {
     try {
       setShowListingError(false);
-      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const API_URL = import.meta.env.VITE_API_URL;
+      const res = await fetch(
+        `${API_URL}/api/user/listings/${currentUser._id}`
+      );
       const data = await res.json();
       if (data.success === false) {
         setShowListingError(true);
@@ -31,7 +34,8 @@ export default function ShowListings() {
   const handleListingDelete = async (listingId) => {
     try {
       setDeleteListingError(false);
-      const res = await fetch(`/api/listing/delete/${listingId}`, {
+      const API_URL = import.meta.env.VITE_API_URL;
+      const res = await fetch(`${API_URL}/api/listing/delete/${listingId}`, {
         method: 'DELETE',
       });
       const data = await res.json();

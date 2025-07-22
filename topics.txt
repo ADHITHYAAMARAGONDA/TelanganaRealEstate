@@ -1,0 +1,2 @@
+FIREBASE DEPLOYED LINK: https://telangana-realestate.web.app
+https://github.com/PayamAnari/mern-estate?tab=readme-ov-file

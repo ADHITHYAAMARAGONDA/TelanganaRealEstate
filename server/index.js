@@ -22,20 +22,13 @@ const __dirname = path.resolve()
 
 const app = express()
 
-app.use(express.json())
-
-app.use(cookieParser())
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000')
-})
-
 const allowedOrigins = [
   'https://telangana-realestate.web.app',
   'https://telangana-realestate.firebaseapp.com',
   'http://localhost:5173',
 ]
 
+// 1. Apply CORS FIRST, before any other middleware or routes
 app.use(
   cors({
     origin: allowedOrigins,
@@ -43,6 +36,11 @@ app.use(
   })
 )
 
+// 2. Then apply other middleware
+app.use(express.json())
+app.use(cookieParser())
+
+// 3. Then define your routes
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/listing', listingRouter)
